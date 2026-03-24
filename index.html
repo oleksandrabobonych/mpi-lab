@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторна робота 1</title>
+    <title>Лабораторна робота 1 - Кінематика</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
@@ -11,21 +11,23 @@
     <div class="container">
         <div class="controls">
             <h2>Параметри руху</h2>
-            <label>X0 (м): <input type="number" id="x0" value="0"></label>
-            <label>Y0 (м): <input type="number" id="y0" value="0"></label>
-            <label>v0 (м/с): <input type="number" id="v0" value="40"></label>
-            <label>a (м/с²): <input type="number" id="a" value="5"></label>
-            <label>Кут α (градуси): <input type="number" id="angle" value="30"></label>
+            <label>Поч. координата X0 (м): <input type="number" id="x0" value="0"></label>
+            <label>Поч. координата Y0 (м): <input type="number" id="y0" value="0"></label>
+            <label>Поч. швидкість v0 (м/с): <input type="number" id="v0" value="40"></label>
+            <label>Прискорення a (м/с²): <input type="number" id="a" value="5"></label>
+            <label>Кут напрямку α (градуси): <input type="number" id="angle" value="30"></label>
             <label>Колір: <input type="color" id="color" value="#ff0000"></label>
             
             <button onclick="launchCanvas()">Запуск (Canvas)</button>
             <button onclick="launchD3()">Запуск (D3.js)</button>
             <button class="clear-btn" onclick="clearAll()">Очистити все</button>
         </div>
+
         <div class="visualization">
-            <h3>Canvas (Растрова)</h3>
+            <h3>Візуалізація Canvas (Растрова)</h3>
             <canvas id="myCanvas" width="600" height="400"></canvas>
-            <h3>D3.js (Векторна)</h3>
+
+            <h3>Візуалізація D3.js (Векторна)</h3>
             <div id="d3-container"></div>
         </div>
     </div>
