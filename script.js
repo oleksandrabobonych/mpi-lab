@@ -9,7 +9,6 @@ window.onload = () => {
     initD3();
 };
 
-
 function getParams() {
     const x0 = parseFloat(document.getElementById('x0').value);
     const y0 = parseFloat(document.getElementById('y0').value);
@@ -26,7 +25,6 @@ function getParams() {
 
     return { x0, y0, v0x, v0y, ax, ay, color };
 }
-
 
 
 function initCanvas() {
@@ -56,7 +54,7 @@ function drawAxesAndGrid(ctx, width, height) {
 function launchCanvas() {
     const params = getParams();
     
-    
+ 
     trajectoriesCanvas.push({
         params: params,
         points: [],
@@ -71,3 +69,13 @@ function launchCanvas() {
         animateCanvas();
     }
 }
+
+function animateCanvas() {
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    const dt = 0.05; 
+    let isAnyActive = false;
+
+   
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawAxesAndGrid(ctx, canvas.width, canvas.height);
