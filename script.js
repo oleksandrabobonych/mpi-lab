@@ -231,7 +231,7 @@ function launchD3() {
 }
 
 function clearAll() {
-    // Зупиняємо Canvas
+    
     if (animationIdCanvas) cancelAnimationFrame(animationIdCanvas);
     animationIdCanvas = null;
     trajectoriesCanvas = [];
@@ -240,3 +240,7 @@ function clearAll() {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawAxesAndGrid(ctx, canvas.width, canvas.height);
+
+    d3.select("#d3-container").selectAll("*").remove();
+    initD3();
+}
