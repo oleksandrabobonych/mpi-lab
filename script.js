@@ -79,3 +79,52 @@ function clearAll() {
 }
 
 function launchD3() { alert("D3 ще не реалізовано!"); }
+let d3Svg = null;
+
+function initD3() {
+    d3Svg = d3.select("#d3-container").append("svg").attr("width", 600).attr("height", 400);
+    const xScale = d3.scaleLinear().domain([0, 600]).range([0, 600]);
+    const yScale = d3.scaleLinear().domain([0, 400]).range([400, 0]);
+    
+    d3Svg.append("g").attr("class", "grid").attr("transform", `translate(0, 400)`).call(d3.axisBottom(xScale).ticks(12).tickSize(-400).tickFormat(""));
+    d3Svg.append("g").attr("class", "grid").call(d3.axisLeft(yScale).ticks(8).tickSize(-600).tickFormat(""));
+    d3Svg.selectAll(".grid line").style("stroke", "#e0e0e0").style("stroke-dasharray", "5,5");
+
+    d3Svg.append("g").attr("transform", `translate(0, 399)`).call(d3.axisBottom(xScale).ticks(12));
+    d3Svg.append("g").attr("transform", "translate(1, 0)").call(d3.axisLeft(yScale).ticks(8));
+}
+
+function launchD3() {
+    const params = getParams();
+    const data = [];
+    let t = 0, x = params.x0, y = params.y0;
+
+    while(x <= 600 && y >= 0 && y <= 400 && t < 20) {
+        data.push({x, y});
+        t += 0.05;
+        x = params.x0 + params.v0x * t + (params.ax * t * t) / 2;
+        y = params.y0 + params.v0y * t + (params.ay * t * t) / 2;
+    }
+
+    const xScale = d3.scaleLinear().domain([0, 600]).range([0, 600]);
+    const yScale = d3.scaleLinear().domain([0, 400]).range([400, 0]);
+    const trajectoryGroup = d3Svg.append("g");
+
+    const path = trajectoryGroup.append("path")
+       .datum(data).attr("fill", "none").attr("stroke", params.color)
+       .attr("stroke-width", 2).attr("d", d3.line().x(d => xScale(d.x)).y(d => yScale(d.y)));
+
+    const circle = trajectoryGroup.append("circle")
+        .attr("r", 6).attr("fill", params.color).attr("stroke", "#000")
+        .attr("cx", xScale(data[0].x)).attr("cy", yScale(data[0].y));
+
+    const len = path.node().getTotalLength();
+    path.attr("stroke-dasharray", len + " " + len).attr("stroke-dashoffset", len)
+        .transition().duration(data.length * 20).ease(d3.easeLinear).attr("stroke-dashoffset", 0);
+
+    circle.transition().duration(data.length * 20).ease(d3.easeLinear)
+        .attrTween("transform", () => t => {
+            const p = path.node().getPointAtLength(t * len);
+            return `translate(${p.x - xScale(data[0].x)}, ${p.y - yScale(data[0].y)})`;
+        });
+}
