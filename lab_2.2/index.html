@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота №2.2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2>Параметри</h2>
+  ="secondary-btn" onclick="resetProject()">Очистити все</button>
+
+            <div class="results-card">
+                <h3>Результати:</h3>
+                <p>Дальність L: <strong id="resL">0</strong> м</p>
+                <p>Висота H: <strong id="resH">0</strong> м</p>
+                <p>Час t: <strong id="resT">0</strong> с</p>
+            </div>
+        </aside>
+
+        <main class="chart-area">
+            <svg id="axesLayer"></svg>
+            <canvas id="trajectoryLayer"></canvas>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

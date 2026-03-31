@@ -1,0 +1,92 @@
+
+:root {
+    --primary: #2563eb;
+    --bg-main: #f8fafc;
+    --sidebar: #ffffff;
+    --text: #1e293b;
+    --border: #e2e8f0;
+}
+body { 
+    margin: 0; 
+    font-family: 'Inter', sans-serif; 
+    background: var(--bg-main); 
+    color: var(--text); 
+}
+
+.app-container { 
+    display: flex; 
+    height: 100vh; 
+}
+
+.sidebar { 
+    width: 300px; 
+    background: var(--sidebar); 
+    padding: 24px; 
+    border-right: 1px solid var(--border); 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px;
+}
+
+
+.input-box label { 
+    display: block; 
+    font-size: 13px; 
+    font-weight: 600; 
+    margin-bottom: 6px; 
+    color: #64748b; 
+}
+
+input[type="number"], 
+input[type="color"] { 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid var(--border); 
+    border-radius: 8px; 
+    box-sizing: border-box;
+}
+
+.grid-inputs { 
+    display: flex; 
+    gap: 10px; 
+}
+
+.primary-btn { 
+    background: var(--primary); 
+    color: white; 
+    border: none; 
+    padding: 14px; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+
+.secondary-btn { 
+    background: white; 
+    color: #ef4444; 
+    border: 1px solid #fecaca; 
+    padding: 10px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+}
+
+
+.results-card { 
+    background: #f1f5f9; 
+    padding: 16px; 
+    border-radius: 12px; 
+    font-size: 14px; 
+}
+
+.results-card strong { 
+    color: var(--primary); 
+    font-size: 16px; 
+}
+
+
+.chart-area { 
+    flex-grow: 1; 
+    position: relative; 
+    padding: 60px; 
+}
+
