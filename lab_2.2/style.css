@@ -90,3 +90,32 @@ input[type="color"] {
     padding: 60px; 
 }
 
+/* Багатошаровість: SVG під Canvas */
+svg { 
+    position: absolute; 
+    z-index: 1; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+}
+
+canvas { 
+    position: absolute; 
+    z-index: 2; 
+    top: 60px; 
+    left: 60px; 
+}
+
+.tick text { 
+    font-size: 12px; 
+    fill: #94a3b8; 
+}
+
+.tick line { 
+    stroke: #f1f5f9; 
+}
+
+.domain { 
+    stroke: #cbd5e1; 
+}

@@ -10,7 +10,34 @@
     <div class="app-container">
         <aside class="sidebar">
             <h2>Параметри</h2>
-  ="secondary-btn" onclick="resetProject()">Очистити все</button>
+            
+            <div class="settings">
+                <div class="input-box">
+                    <label>Швидкість v (м/с)</label>
+                    <input type="number" id="v0" value="45">
+                </div>
+                <div class="input-box">
+                    <label>Кут кидка (°)</label>
+                    <input type="number" id="angle" value="45">
+                </div>
+                <div class="grid-inputs">
+                    <div class="input-box">
+                        <label>x (м)</label>
+                        <input type="number" id="x0" value="0">
+                    </div>
+                    <div class="input-box">
+                        <label>y (м)</label>
+                        <input type="number" id="y0" value="0">
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label>Колір лінії</label>
+                    <input type="color" id="color" value="#2563eb">
+                </div>
+            </div>
+
+            <button class="primary-btn" onclick="startSimulation()">Побудувати траєкторію</button>
+            <button class="secondary-btn" onclick="resetProject()">Очистити все</button>
 
             <div class="results-card">
                 <h3>Результати:</h3>
